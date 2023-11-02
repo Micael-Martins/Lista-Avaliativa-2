@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char time[30], time2[30], nome[30], nome2[30], pos, pos2;
+    int i, num, num2;
+    double G = 0, L1 = 0, L2 = 0, Z1 = 0, Z2 = 0, V1 = 0, V2 = 0, M1 = 0, M2 = 0, A1 = 0, A2 = 0, G2 = 0, L3 = 0, L4 = 0, Z3 = 0, Z4 = 0, V3 = 0, V4 = 0, M3 = 0, M4 = 0, A3 = 0, A4 = 0;
+    double tim1, tim2;
+
+    // Leitura do primeiro time
+    scanf("%29[^\n]\n", time);
+
+    for (i = 0; i < 11; i++) {
+        scanf("%29[^;]; %c; %d\n", nome, &pos, &num);
+        if (pos == 'G') {
+            G = num;
+        } else if (pos == 'L' && L1 == 0) {
+            L1 = num;
+        } else if (pos == 'L' && L1 != 0) {
+            L2 = num;
+        } else if (pos == 'Z' && Z1 == 0) {
+            Z1 = num;
+        } else if (pos == 'Z' && Z1 != 0) {
+            Z2 = num;
+        } else if (pos == 'V' && V1 == 0) {
+            V1 = num;
+        } else if (pos == 'V' && V1 != 0) {
+            V2 = num;
+        } else if (pos == 'M' && M1 == 0) {
+            M1 = num;
+        } else if (pos == 'M' && M1 != 0) {
+            M2 = num;
+        } else if (pos == 'A' && A1 == 0) {
+            A1 = num;
+        } else if (pos == 'A' && A1 != 0) {
+            A2 = num;
+        }
+    }
+
+    // Leitura do segundo time
+    scanf("%29[^\n]\n", time2);
+
+    for (i = 0; i < 11; i++) {
+        scanf("%29[^;]; %c; %d\n", nome2, &pos2, &num2);
+        if (pos2 == 'G') {
+            G2 = num2;
+        } else if (pos2 == 'L' && L3 == 0) {
+            L3 = num2;
+        } else if (pos2 == 'L' && L3 != 0) {
+            L4 = num2;
+        } else if (pos2 == 'Z' && Z3 == 0) {
+            Z3 = num2;
+        } else if (pos2 == 'Z' && Z3 != 0) {
+            Z4 = num2;
+        } else if (pos2 == 'V' && V3 == 0) {
+            V3 = num2;
+        } else if (pos2 == 'V' && V3 != 0) {
+            V4 = num2;
+        } else if (pos2 == 'M' && M3 == 0) {
+            M3 = num2;
+        } else if (pos2 == 'M' && M3 != 0) {
+            M4 = num2;
+        } else if (pos2 == 'A' && A3 == 0) {
+            A3 = num2;
+        } else if (pos2 == 'A' && A3 != 0) {
+            A4 = num2;
+        }
+    }
+
+    tim1 = (8 * G + 10 * (L1 + L2) + 5 * (Z1 + Z2) + 8 * (V1 + V2) + 11 * (M1 + M2) + 12 * (A1 + A2)) / 100.0;
+    tim2 = (8 * G2 + 10 * (L3 + L4) + 5 * (Z3 + Z4) + 8 * (V3 + V4) + 11 * (M3 + M4) + 12 * (A3 + A4)) / 100.0;
+
+    printf("%s: %.2lf de forca\n", time, tim1);
+    printf("%s: %.2lf de forca\n", time2, tim2);
+
+    if (tim1 > tim2) {
+        printf("%s eh mais forte\n", time);
+    } else {
+        printf("%s eh mais forte\n", time2);
+    }
+
+    return 0;
+}
