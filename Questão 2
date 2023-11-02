@@ -1,0 +1,68 @@
+// Passos para a construcao do codigo
+#include <stdio.h>
+#include <string.h>
+int main (){
+    int matA[4][4];
+    int matB[4][4];
+    char opc[5];
+    int resp[4][4];
+    int lin;
+    int col;
+// Resetando a resposta por que tava dando erro
+    for (lin = 0; lin < 4; lin++) {
+        for (col = 0; col < 4; col++) {
+            resp[lin][col] = 0;
+        }
+    }
+
+// Primeiramente, faz as entradas para as matrizes. Inicie pela A
+    for ( lin = 0; lin < 4; lin++){
+        for (col = 0; col < 4; col++){
+            scanf("%d", &matA[lin][col]);
+        }
+    }
+// Agora faz a entrada para a matriz B
+    for ( lin = 0; lin < 4; lin++){
+            for (col = 0; col < 4; col++){
+                scanf("%d", &matB[lin][col]);
+            }
+        }
+// Cria uma string que possa ser lida 
+    scanf("%s", &opc);
+// Fazendo a opcao soma
+    if( strcmp( opc, "soma") == 0){
+        for( lin = 0; lin < 4; lin++){
+            for( col = 0; col < 4; col++){
+                resp[lin][col] += matA[lin][col] + matB[lin][col];
+            }
+        }
+
+    }
+// Fazendo a opcao sub
+    else if( strcmp( opc, "sub") == 0){
+        for( lin = 0; lin < 4; lin++){
+            for( col = 0; col < 4; col++){
+                resp[lin][col] = matA[lin][col] - matB[lin][col];
+            }
+        }
+
+    }
+// Fazendo a opcao mult
+    else if (strcmp(opc, "mult") == 0) {
+        for (lin = 0; lin < 4; lin++) {
+            for (col = 0; col < 4; col++) {
+                for (int k = 0; k < 4; k++) {
+                    resp[lin][col] += matA[lin][k] * matB[k][col];
+                }
+            }
+        }
+    }
+// Fazendo o print final e torcendo pra dar certo
+    for (lin = 0; lin < 4; lin++) {
+        for (col = 0; col < 4; col++) {
+            printf("%4d", resp[lin][col]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
